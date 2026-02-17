@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Management & Defect Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Test Management & Defect Tracking Tool</h1>
+    <p>Track defects, monitor QA health, and manage progress from one dashboard.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Dashboard</h2>
+      <div id="summary" class="grid"></div>
+      <h3>Severity Breakdown</h3>
+      <div id="severityBars" class="bars"></div>
+    </section>
+
+    <section class="card">
+      <h2>Create Defect</h2>
+      <form id="createDefectForm">
+        <label>Title <input required name="title" /></label>
+        <label>Description <textarea required name="description"></textarea></label>
+        <label>Status
+          <select name="status" id="statusSelect"></select>
+        </label>
+        <label>Severity
+          <select name="severity" id="severitySelect"></select>
+        </label>
+        <label>Assignee <input name="assignee" value="Unassigned" /></label>
+        <button type="submit">Add Defect</button>
+      </form>
+      <p id="message"></p>
+    </section>
+
+    <section class="card">
+      <h2>Defect List</h2>
+      <div class="filters">
+        <input id="searchInput" placeholder="Search by id, title, description" />
+        <select id="filterStatus"><option value="">All Status</option></select>
+        <select id="filterSeverity"><option value="">All Severity</option></select>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Severity</th>
+            <th>Assignee</th>
+            <th>Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="defectTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

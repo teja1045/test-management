@@ -1,0 +1,12 @@
+{
+  "name": "test-management-tool",
+  "version": "1.0.0",
+  "description": "Full-stack defect tracking and dashboard application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["defect-tracking", "test-management", "dashboard"],
+  "license": "MIT"
+}

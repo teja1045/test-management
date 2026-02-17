@@ -1,0 +1,32 @@
+[
+  {
+    "id": "DEF-1001",
+    "title": "Login form error on empty password",
+    "description": "Application returns 500 instead of validation message.",
+    "status": "Open",
+    "severity": "High",
+    "assignee": "QA Team",
+    "createdAt": "2026-02-17T09:34:52.820Z",
+    "updatedAt": "2026-02-17T09:34:52.820Z"
+  },
+  {
+    "id": "DEF-1002",
+    "title": "Dashboard widget alignment issue",
+    "description": "Cards overlap on tablet viewport.",
+    "status": "In Progress",
+    "severity": "Medium",
+    "assignee": "Frontend Team",
+    "createdAt": "2026-02-17T09:34:52.820Z",
+    "updatedAt": "2026-02-17T09:34:52.820Z"
+  },
+  {
+    "id": "DEF-1003",
+    "title": "API failure on retry",
+    "description": "Intermittent 502 in retry flow",
+    "status": "Open",
+    "severity": "Critical",
+    "assignee": "Backend Team",
+    "createdAt": "2026-02-17T09:34:56.476Z",
+    "updatedAt": "2026-02-17T09:34:56.476Z"
+  }
+]
