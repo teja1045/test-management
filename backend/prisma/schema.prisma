@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  admin
+  tester
+}
+
+enum TestResultStatus {
+  passed
+  failed
+  blocked
+}
+
+model User {
+  id             Int          @id @default(autoincrement())
+  username       String       @unique
+  email          String       @unique
+  hashedPassword String       @map("hashed_password")
+  role           UserRole
+  createdAt      DateTime     @default(now()) @map("created_at")
+  testCases      TestCase[]
+  results        TestResult[] @relation("ExecutedResults")
+
+  @@map("users")
+}
+
+model TestCase {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  status      String       @default("active")
+  createdById Int          @map("created_by")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  createdBy   User         @relation(fields: [createdById], references: [id])
+  results     TestResult[]
+
+  @@map("test_cases")
+}
+
+model TestRun {
+  id        Int          @id @default(autoincrement())
+  name      String
+  createdAt DateTime     @default(now()) @map("created_at")
+  results   TestResult[]
+
+  @@map("test_runs")
+}
+
+model TestResult {
+  id         Int              @id @default(autoincrement())
+  testRunId  Int              @map("test_run_id")
+  testCaseId Int              @map("test_case_id")
+  status     TestResultStatus
+  executedBy Int              @map("executed_by")
+  executedAt DateTime         @default(now()) @map("executed_at")
+  testRun    TestRun          @relation(fields: [testRunId], references: [id])
+  testCase   TestCase         @relation(fields: [testCaseId], references: [id])
+  user       User             @relation("ExecutedResults", fields: [executedBy], references: [id])
+
+  @@map("test_results")
+}
